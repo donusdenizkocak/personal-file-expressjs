@@ -4,6 +4,7 @@ import { Phone } from "./Phone"
 import { Address } from "./Address"
 import { Email } from "./Email"
 
+
 @Entity()
 export class User {
 
@@ -26,7 +27,7 @@ export class User {
     // @Column()
     // phone: string
 
-    @OneToMany(() => Email, (email) => email.user)
+    @OneToMany(() => Email, (email) => email.emailAddress)
     email: Email
 
 
