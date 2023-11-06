@@ -1,7 +1,8 @@
 import { title } from "process"
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, JoinColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, JoinColumn, OneToMany } from "typeorm"
 import { City } from "./City"
 import { District } from "./District"
+import { Address } from "./Address"
 
 
 @Entity()
@@ -16,4 +17,7 @@ export class Town {
     @ManyToOne(() => District, (district) => district.id)
     @JoinColumn()
     district: District
+
+    @OneToMany(() => Address, (address) => address.town)
+    address:Address
 }

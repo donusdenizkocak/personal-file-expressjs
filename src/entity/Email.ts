@@ -2,6 +2,7 @@ import { title } from "process"
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, JoinColumn } from "typeorm"
 import { User } from "./User"
 
+enum type {JOB="iş",HOME="ev"}
 
 @Entity()
 export class Email {
@@ -9,8 +10,8 @@ export class Email {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
-    emailType: string
+    @Column({type:"enum",enum:type, default:type.HOME})
+    addressType: type  
 
     @Column()
     emailAddress: string

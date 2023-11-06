@@ -1,3 +1,6 @@
+import { CityController } from "./controller/CityController"
+import { CountryController } from "./controller/CountryController"
+import { TownController } from "./controller/TownController"
 import { UserController } from "./controller/UserController"
 
 export const Routes = [{
@@ -30,4 +33,34 @@ export const Routes = [{
     route: "/users/:id",
     controller: UserController,
     action: "remove"
+}, {
+    method: "get",
+    route: "/cities",
+    controller: CityController,
+    action: "all"
+}, {
+    method: "post",
+    route: "/city",
+    controller: CityController,
+    action: "save"
+}, {
+    method: "get",
+    route: "/town",
+    controller: TownController,
+    action: "all"
+}, {
+    method: "post",
+    route: "/town",
+    controller: TownController,
+    action: "save"
+}, {
+    method: "get",
+    route: "/country",
+    controller: CountryController,
+    action: "all"
+}, {
+    method: "post",
+    route: "/country",
+    controller: CountryController,
+    action: "save"
 }]

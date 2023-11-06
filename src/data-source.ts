@@ -7,6 +7,7 @@ import { City } from "./entity/City"
 import { District } from "./entity/District"
 import { Town } from "./entity/Town"
 import { Email } from "./entity/Email"
+import { Country } from "./entity/Country"
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -17,7 +18,7 @@ export const AppDataSource = new DataSource({
     database: "address",
     synchronize: true,
     logging: false,
-    entities: [User,Phone,Address,City,District,Town,Email],
+    entities: [User, Phone, Address, Country, City, District, Town, Email],
     migrations: [],
     subscribers: [],
 })
