@@ -25,9 +25,9 @@ export class User {
     address: Address
     
     // @Column()
-    // phone: string
+    // phone: string 
 
-    @OneToMany(() => Email, (email) => email.emailAddress)
+    @OneToMany(() => Email, (email) => email.user)
     email: Email
 
 

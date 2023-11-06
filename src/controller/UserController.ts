@@ -7,7 +7,7 @@ export class UserController {
     private userRepository = AppDataSource.getRepository(User)
 
     async all(request: Request, response: Response, next: NextFunction) {
-        return this.userRepository.find({relations:{phone:true,address:true}})
+        return this.userRepository.find({relations:{phone:true,address:true,email:true}})
     }
 
     async search(request: Request, response: Response, next: NextFunction) {
