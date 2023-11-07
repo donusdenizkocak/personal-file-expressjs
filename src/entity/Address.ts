@@ -6,7 +6,7 @@ import { District } from "./District"
 import { Town } from "./Town"
 import { Country } from "./Country"
 
-enum type {JOB="iş",HOME="ev"}
+enum type {JOB="iş",HOME="ev"}   //secenekleri sınırlandırmak çerçeve çizmek için ENUM kullanılır
 
 
 @Entity()
