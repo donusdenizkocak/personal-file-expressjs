@@ -23,5 +23,16 @@ export class CityController {
         })
         return this.cityRepository.save(city)
     }
+    async update(request: Request, response: Response, next: NextFunction){
+        const id =parseInt(request.params.id);
+        const {name,countryId} =request.body
+
+        const country = await this.countryRepository.findOne({where: {id:countryId}})
+
+        if(country)
+           return this.cityRepository.update({id},{name})
+        else
+          return false
+    }
 
 }

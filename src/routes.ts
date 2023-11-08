@@ -44,6 +44,11 @@ export const Routes = [{
     route: "/city",
     controller: CityController,
     action: "save"
+}, {
+    method: "put",
+    route: "/city/:id",
+    controller: CityController,
+    action: "update"
 },  {
     method: "get",
     route: "/district",
@@ -54,11 +59,26 @@ export const Routes = [{
     route: "/district",
     controller: DistrictController,
     action: "save"
+},  {
+    method: "put",
+    route: "/district/:id",
+    controller: DistrictController,
+    action: "update"
 },{
     method: "get",
     route: "/town",
     controller: TownController,
     action: "all"
+},{
+    method: "post",
+    route: "/town",
+    controller: TownController,
+    action: "save"
+},{
+    method: "put",
+    route: "/town/:id",
+    controller: TownController,
+    action: "update"
 },{
     method: "get",
     route: "/district",
@@ -79,4 +99,9 @@ export const Routes = [{
     route: "/country",
     controller: CountryController,
     action: "save"
+}, {
+    method: "put",
+    route: "/country/:id",
+    controller: CountryController,
+    action: "update"
 }]

@@ -16,14 +16,27 @@ export class TownController {
         const { name, districtId } = request.body;
 
         console.log(request.body)
-        
-        const district= await this.districtRepository.findOne({where:{id:districtId}})
+
+        const district = await this.districtRepository.findOne({ where: { id: districtId } })
 
         const town = Object.assign(new District(), {
             name,
             district,
         })
         return this.townRepository.save(town)
+    }
+
+    async update(request: Request, response: Response, next: NextFunction) {
+        const id = parseInt(request.params.id)
+        const { name, districtId } = request.body;
+
+        const district = await this.districtRepository.findOne({ where: { id: districtId } })
+
+
+        if (district)
+            return this.townRepository.update({ id }, { name, district })
+        else
+            return false
     }
 
 }

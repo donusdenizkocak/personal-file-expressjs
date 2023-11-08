@@ -23,5 +23,16 @@ export class DistrictController {
         })
         return this.districtRepository.save(district)
     }
+    async update(request: Request, response: Response, next: NextFunction) {
+        const id=parseInt(request.params.id)
+        const { name, cityId } = request.body;
+
+        const city = await  this.countryRepository.findOne({where:{id:cityId}})
+
+        if(city)
+          return this.districtRepository.update({id},{name,city})
+        else
+        return false
+    }
 
 }
