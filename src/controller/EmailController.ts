@@ -2,43 +2,42 @@ import { AppDataSource } from "../data-source"
 import { NextFunction, Request, Response } from "express"
 import { Phone } from "../entity/Phone"
 import { User } from "../entity/User"
+import { Email } from "../entity/Email"
 
 
-export class PhoneController {
+export class EmailController {
 
-    private phoneRepository = AppDataSource.getRepository(Phone)
+    private emailRepository = AppDataSource.getRepository(Email)
     private userRepository = AppDataSource.getRepository(User)
 
     async save(request: Request, response: Response, next: NextFunction) {
-        const { phoneType, phoneNumber }: Phone = request.body;
+        const { emailType, emailAddress }: Email = request.body;
         const user = await this.userRepository.findOne({
            
         })
 
         const address = Object.assign(new Phone(), {
-            phoneType:phoneType,
-           phoneNumber:phoneNumber,
+            emailType:emailType,
+            emailAddress:emailAddress,
             user
         })
 
-        return this.phoneRepository.save(address)
+        return this.emailRepository.save(address)
     }
 
 
     async update(request: Request, response: Response, next: NextFunction) {
         const id=parseInt(request.params.id)
-        const {  phoneType, phoneNumber  }: Phone = request.body;
+        const { emailType, emailAddress }: Email = request.body;
 
-        const user = await this.userRepository.findOne({
-           
-        })
+        const user = await this.userRepository.findOne({})
 
-        return this.phoneRepository.update({
-          id
+        return this.emailRepository.update({
+            id
         }, {
-            phoneType:phoneType,
-           phoneNumber:phoneNumber,
-            user
+            emailType,
+            emailAddress
+            
         })
     }
 }

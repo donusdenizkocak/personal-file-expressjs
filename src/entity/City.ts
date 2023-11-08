@@ -17,9 +17,9 @@ export class City {
     @JoinColumn()
     countyr: Country
 
-    @OneToOne(() => District, (district) => district.id)
+    @OneToOne(() => District, (district) => district.town)
     district: District
 
-    @OneToOne(() => Address, (address) => address.id)
+    @OneToOne(() => Address, (address) => address.city)
     address: Address
 }

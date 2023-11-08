@@ -11,7 +11,7 @@ export class Email {
     id: number
 
     @Column({type:"enum",enum:type, default:type.HOME})
-    addressType: type  
+    emailType: type  
 
     @Column()
     emailAddress: string

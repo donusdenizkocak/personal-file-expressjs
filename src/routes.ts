@@ -1,3 +1,4 @@
+import { AddressController } from "./controller/AddressController"
 import { CityController } from "./controller/CityController"
 import { CountryController } from "./controller/CountryController"
 import { DistrictController } from "./controller/DistrictController"
@@ -36,9 +37,14 @@ export const Routes = [{
     action: "remove"
 }, {
     method: "get",
-    route: "/cities",
+    route: "/city",
     controller: CityController,
     action: "all"
+}, {
+    method: "get",
+    route: "/city/user/:cityId",
+    controller:CityController,
+    action: "cityUser"
 }, {
     method: "post",
     route: "/city",
@@ -95,6 +101,11 @@ export const Routes = [{
     controller: CountryController,
     action: "all"
 }, {
+    method: "get",
+    route: "/country/user/:countryId",
+    controller:CountryController,
+    action: "countryUser"
+}, {
     method: "post",
     route: "/country",
     controller: CountryController,
@@ -103,5 +114,30 @@ export const Routes = [{
     method: "put",
     route: "/country/:id",
     controller: CountryController,
+    action: "update"
+}, {
+    method: "get",
+    route: "/address",
+    controller: AddressController,
+    action: "all"
+}, {
+    method: "get",
+    route: "/address/:id",
+    controller: AddressController,
+    action: "one"
+}, {
+    method: "get",
+    route: "/address/user/:userId",
+    controller: AddressController,
+    action: "userOne"
+}, {
+    method: "post",
+    route: "/address",
+    controller: AddressController,
+    action: "save"
+}, {
+    method: "put",
+    route: "/address/:id",
+    controller: AddressController,
     action: "update"
 }]
