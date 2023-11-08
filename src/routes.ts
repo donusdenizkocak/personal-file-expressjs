@@ -61,6 +61,11 @@ export const Routes = [{
     controller: DistrictController,
     action: "all"
 }, {
+    method: "get",
+    route: "/district/user/:districtId",
+    controller:DistrictController,
+    action: "districtUser"
+}, {
     method: "post",
     route: "/district",
     controller: DistrictController,
@@ -75,6 +80,11 @@ export const Routes = [{
     route: "/town",
     controller: TownController,
     action: "all"
+}, {
+    method: "get",
+    route: "/town/user/:townId",
+    controller:TownController,
+    action: "townUser"
 },{
     method: "post",
     route: "/town",
