@@ -1,6 +1,5 @@
 import { title } from "process"
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, JoinColumn, OneToMany } from "typeorm"
-import { User } from "./User"
 import { City } from "./City"
 import { Town } from "./Town"
 

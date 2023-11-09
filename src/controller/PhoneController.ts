@@ -12,12 +12,12 @@ export class PhoneController {
     async save(request: Request, response: Response, next: NextFunction) {
         const { phoneType, phoneNumber }: Phone = request.body;
         const user = await this.userRepository.findOne({
-           
+
         })
 
         const address = Object.assign(new Phone(), {
-            phoneType:phoneType,
-           phoneNumber:phoneNumber,
+            phoneType: phoneType,
+            phoneNumber: phoneNumber,
             user
         })
 
@@ -26,18 +26,18 @@ export class PhoneController {
 
 
     async update(request: Request, response: Response, next: NextFunction) {
-        const id=parseInt(request.params.id)
-        const {  phoneType, phoneNumber  }: Phone = request.body;
+        const id = parseInt(request.params.id)
+        const { phoneType, phoneNumber }: Phone = request.body;
 
         const user = await this.userRepository.findOne({
-           
+
         })
 
         return this.phoneRepository.update({
-          id
+            id
         }, {
-            phoneType:phoneType,
-           phoneNumber:phoneNumber,
+            phoneType: phoneType,
+            phoneNumber: phoneNumber,
             user
         })
     }

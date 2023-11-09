@@ -16,13 +16,13 @@ export class EmailController {
            
         })
 
-        const address = Object.assign(new Phone(), {
+        const email = Object.assign(new Email(), {
             emailType:emailType,
             emailAddress:emailAddress,
             user
         })
 
-        return this.emailRepository.save(address)
+        return this.emailRepository.save(email)
     }
 
 

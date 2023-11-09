@@ -2,6 +2,7 @@ import { AddressController } from "./controller/AddressController"
 import { CityController } from "./controller/CityController"
 import { CountryController } from "./controller/CountryController"
 import { DistrictController } from "./controller/DistrictController"
+import { FileController } from "./controller/FileController"
 import { TownController } from "./controller/TownController"
 import { UserController } from "./controller/UserController"
 
@@ -150,4 +151,9 @@ export const Routes = [{
     route: "/address/:id",
     controller: AddressController,
     action: "update"
-}]
+ } , {
+        method: "get",
+        route: "/file-read",
+        controller: FileController,
+        action: "all"
+    }]

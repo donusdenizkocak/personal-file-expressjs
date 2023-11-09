@@ -11,7 +11,7 @@ export class AddressController {
 
     private addressRepository = AppDataSource.getRepository(Address)
     private countryRepository = AppDataSource.getRepository(Country)
-    private userRepestory = AppDataSource.getRepository(User)
+    private userRepository = AppDataSource.getRepository(User)
     private districtRepository = AppDataSource.getRepository(District)
     private townRepository = AppDataSource.getRepository(Town)
     private cityRepository = AppDataSource.getRepository(City)
@@ -44,7 +44,7 @@ export class AddressController {
     async userOne(request: Request, response: Response, next: NextFunction) {
         const userId= parseInt(request.params.userId)
 
-        const user = await this.userRepestory.findOne({where :{id:userId}})
+        const user = await this.userRepository.findOne({where :{id:userId}})
        
         const address= await this.addressRepository.find(
             {where:{user},
@@ -80,7 +80,7 @@ export class AddressController {
             townId
         } = request.body;
 
-        const user = await this.userRepestory.findOne({ where: { id: userId } })
+        const user = await this.userRepository.findOne({ where: { id: userId } })
         const country = await this.countryRepository.findOne({ where: { id: countryId } })
         const city = await this.cityRepository.findOne({ where: { id: cityId } })
         const district = await this.districtRepository.findOne({ where: { id: districtId } })
@@ -116,7 +116,7 @@ export class AddressController {
             townId
         } = request.body;
 
-        const user = await this.userRepestory.findOne({ where: { id: userId } })
+        const user = await this.userRepository.findOne({ where: { id: userId } })
         const country = await this.countryRepository.findOne({ where: { id: countryId } })
         const city = await this.cityRepository.findOne({ where: { id: cityId } })
         const district = await this.districtRepository.findOne({ where: { id: districtId } })
