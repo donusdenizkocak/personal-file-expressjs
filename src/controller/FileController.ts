@@ -67,13 +67,18 @@ export class FileController {
       })
     })
 
-    const user = Object.assign(new User(), {
-      firstName: "test",
-      lastName: "user",
-      age: 11,
-    })
-    const insertUser =await this.userRepository.save(user)
+    const users=[1,2,3,4,5,6,7,8,9,10]
 
+    for(let x of users){
+      const user = Object.assign(new User(), {
+        firstName: "TestName" + x,
+        lastName: "UserLastname" + x,
+        age: 11,
+      })
+     await this.userRepository.save(user)
+    }
+
+   
     const phone = Object.assign(new Phone(), {
       phoneType: "iş",
       phoneNumber: "0505444444",
@@ -86,6 +91,8 @@ export class FileController {
     })
     await this.emailRepository.save(email)
 
+    const insertUser = await this.userRepository.findOne({where:{id:1}})
+   
     const country = await this.countryRepository.findOne({ where: { id: 1 } })
     const city = await this.cityRepository.findOne({ where: { id: 68 } })
     const district = await this.districtRepository.findOne({ where: { id: 1 } })

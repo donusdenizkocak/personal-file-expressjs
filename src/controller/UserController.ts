@@ -1,19 +1,28 @@
 import { AppDataSource } from "../data-source"
 import { NextFunction, Request, Response } from "express"
 import { User } from "../entity/User"
+import { Like } from "typeorm"
 
 export class UserController {
 
     private userRepository = AppDataSource.getRepository(User)
 
     async all(request: Request, response: Response, next: NextFunction) {
-        return this.userRepository.find({relations:{phone:true,address:true,email:true}})
+        return this.userRepository.find({ relations: { phone: true, address: true, email: true } })
     }
 
     async search(request: Request, response: Response, next: NextFunction) {
-        const lastName =request.query['lastName'] as string;
-     
-        return this.userRepository.find({where: {lastName}})
+        const lastName = request.query['lastName'] as string;
+        const firstName = request.query['firstName'] as string;
+
+        return this.userRepository.find({
+            where: {
+                firstName: Like(`%${firstName}%`),
+                lastName: Like(`%${lastName}%`)
+        }
+        })
+
+        // return this.userRepository.find({where: {lastName:lastName,firstName:firstName}})
     }
 
     async one(request: Request, response: Response, next: NextFunction) {
@@ -31,7 +40,7 @@ export class UserController {
     }
 
     async save(request: Request, response: Response, next: NextFunction) {
-        const { firstName, lastName, age,phone,city } = request.body;
+        const { firstName, lastName, age, phone, city } = request.body;
 
         // const us= request.body as User;
         // const usr:User =request.body
@@ -46,17 +55,17 @@ export class UserController {
             city
         })
 
-            // return this.userRepository.save(firstName,lastName,...)  object assing kullanmaya gerek kalmıyor
+        // return this.userRepository.save(firstName,lastName,...)  object assing kullanmaya gerek kalmıyor
         return this.userRepository.save(user)
     }
 
     async update(request: Request, response: Response, next: NextFunction) {
-        const userId =Number(request.params.id)
-        const { firstName, lastName, age,phone }:User = request.body;
+        const userId = Number(request.params.id)
+        const { firstName, lastName, age, phone }: User = request.body;
 
         return this.userRepository.update({
-         id:userId
-        },{
+            id: userId
+        }, {
             firstName,
             lastName,
             age,

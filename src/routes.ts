@@ -3,37 +3,38 @@ import { CityController } from "./controller/CityController"
 import { CountryController } from "./controller/CountryController"
 import { DistrictController } from "./controller/DistrictController"
 import { FileController } from "./controller/FileController"
+import { SearchController } from "./controller/SearchController"
 import { TownController } from "./controller/TownController"
 import { UserController } from "./controller/UserController"
 
 export const Routes = [{
     method: "get",
-    route: "/users",
+    route: "/user",
     controller: UserController,
     action: "all"
 }, {
     method: "get",
-    route: "/users/search",
+    route: "/user/search",
     controller: UserController,
     action: "search"
 }, {
     method: "get",
-    route: "/users/:id",
+    route: "/user/:id",
     controller: UserController,
     action: "one"
 }, {
     method: "post",
-    route: "/users",
+    route: "/user",
     controller: UserController,
     action: "save"
 }, {
     method: "put",
-    route: "/users/:id",
+    route: "/user/:id",
     controller: UserController,
     action: "update"
 }, {
     method: "delete",
-    route: "/users/:id",
+    route: "/user/:id",
     controller: UserController,
     action: "remove"
 }, {
@@ -155,5 +156,10 @@ export const Routes = [{
         method: "get",
         route: "/file-read",
         controller: FileController,
+        action: "all"
+    }, {
+        method: "get",
+        route: "/search",
+        controller: SearchController,
         action: "all"
     }]

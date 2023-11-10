@@ -16,7 +16,7 @@ export class Country {
     addressLine: string
 
 
-    @ManyToOne(() => City, (city) => city.countyr)
+    @ManyToOne(() => City, (city) => city.country)
     @JoinColumn()
     city: City
 
