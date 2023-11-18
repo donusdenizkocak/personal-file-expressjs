@@ -3,7 +3,8 @@ import * as bodyParser from "body-parser"
 import { Request, Response } from "express"
 import { AppDataSource } from "./data-source"
 import { Routes } from "./routes"
-import { User } from "./entity/User"
+import cors = require("cors")
+
 
 
 AppDataSource.initialize().then(async () => {
@@ -12,6 +13,7 @@ AppDataSource.initialize().then(async () => {
     const app = express()
     app.use(bodyParser.json())
     app.use(express.static('public'))
+    app.use(cors({credentials:true}))
     
     // register express routes from defined application routes
     Routes.forEach(route => {

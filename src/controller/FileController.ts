@@ -77,21 +77,23 @@ export class FileController {
       })
      await this.userRepository.save(user)
     }
-
+    const user = await this.userRepository.findOne({where:{id:1}})
    
     const phone = Object.assign(new Phone(), {
       phoneType: "iş",
       phoneNumber: "0505444444",
+      user
     })
     await this.phoneRepository.save(phone)
 
     const email = Object.assign(new Email(), {
       emailType: "iş",
       emailAddress: "abc@xyz.com",
+      user
     })
     await this.emailRepository.save(email)
 
-    const insertUser = await this.userRepository.findOne({where:{id:1}})
+   
    
     const country = await this.countryRepository.findOne({ where: { id: 1 } })
     const city = await this.cityRepository.findOne({ where: { id: 68 } })
@@ -104,7 +106,7 @@ export class FileController {
       street: "12046",
       post_code: "20000",
       location: "123,456",
-      user: insertUser,
+      user: user,
       country,
       city,
       district,

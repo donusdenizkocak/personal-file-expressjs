@@ -30,7 +30,9 @@ export class SearchController {
                     }
                 }
                 ],
-            relations: { district: { city: { country: true } }, address: true }
+            relations: { district: { city: { country: true } },
+             address: {user:{email:true,phone:true}} 
+            }
         })
     }
 
